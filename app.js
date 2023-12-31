@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+app.use(express.static('public'))
+
 app.get('/', (req, res) => {
     //   res.send('express app for movies')
     res.redirect('/movies')
@@ -18,5 +20,7 @@ app.get('/movies/:id', (req, res) => {
     res.send(`read movie:${id}, params:${params}`)
 })
 app.listen(port, () => {
-      console.log(`express server is running on http://localhost:${port}`)
+    console.log(`express server is running on http://localhost:${port}`)
+    // console.log('params',params)
+    // console.log('params.id',params.id)
 })
