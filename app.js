@@ -23,9 +23,12 @@ app.get('/movies', (req, res) => {
 app.get('/movies/:id', (req, res) => {
     const params = req.params
     const id = req.params.id
+    const movie = movies.find((mv) => mv.id.toString() === id)
     console.log('params',params)
     console.log('params.id',params.id)
-    res.send(`read movie:${id}, params:${params}`)
+    // res.send(`read movie:${id}, params:${params}`)
+    
+    res.render('detail', { movie, BASE_IMG_URL })
 })
 app.listen(port, () => {
     console.log(`express server is running on http://localhost:${port}`)
